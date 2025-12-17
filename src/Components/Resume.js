@@ -1,0 +1,72 @@
+const TEMPLATES = [
+  {
+    id: 1,
+    name: "Modern Blue",
+    description: "Clean, professional template with blue highlights.",
+    preview: "/templates/template1.png",
+    file: "/templates/template1.pdf", // optional if you want ready pdf
+  },
+  {
+    id: 2,
+    name: "Classic Black",
+    description: "Simple black & white template for ATS readability.",
+    preview: "/templates/template2.png",
+    file: "/templates/template2.pdf",
+  },
+  {
+    id: 3,
+    name: "Creative Header",
+    description: "Template with stylish header for personal branding.",
+    preview: "/templates/template3.png",
+    file: "/templates/template3.pdf",
+  },
+  {
+    id: 4,
+    name: "Minimalist",
+    description: "Very clean, single-column, ATS-optimized template.",
+    preview: "/templates/template4.png",
+    file: "/templates/template4.pdf",
+  },
+  {
+    id: 5,
+    name: "Two Column Pro",
+    description: "Left sidebar for skills, right side for experience.",
+    preview: "/templates/template5.png",
+    file: "/templates/template5.pdf",
+  },
+  {
+    id: 6,
+    name: "Elegant Grey",
+    description: "Professional look with subtle grey accents.",
+    preview: "/templates/template6.png",
+    file: "/templates/template6.pdf",
+  },
+  {
+    id: 7,
+    name: "Compact Resume",
+    description: "Condensed layout to fit more content on one page.",
+    preview: "/templates/template7.png",
+    file: "/templates/template7.pdf",
+  },
+  {
+    id: 8,
+    name: "Tech CV",
+    description: "Perfect for software engineers and IT roles.",
+    preview: "/templates/template8.png",
+    file: "/templates/template8.pdf",
+  },
+  {
+    id: 9,
+    name: "Business Formal",
+    description: "Suited for corporate, finance, and consulting jobs.",
+    preview: "/templates/template9.png",
+    file: "/templates/template9.pdf",
+  },
+  {
+    id: 10,
+    name: "Creative Designer",
+    description: "Visually appealing template for creative fields.",
+    preview: "/templates/template10.png",
+    file: "/templates/template10.pdf",
+  },
+];
