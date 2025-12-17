@@ -74,7 +74,7 @@ export default function AdminGallery() {
   }
 
   function remove(category, id) {
-    if (!confirm("Delete this image?")) return;
+    if (!window.confirm("Delete this image?")) return;
     setData((prev) => ({ ...prev, [category]: prev[category].filter((it) => it.id !== id) }));
   }
 
@@ -106,7 +106,7 @@ export default function AdminGallery() {
   }
 
   function resetDefaults() {
-    if (!confirm("Reset gallery to default sample data? This will overwrite current data.")) return;
+    if (!window.confirm("Reset gallery to default sample data? This will overwrite current data.")) return;
     setData(DEFAULT_DATA);
   }
 

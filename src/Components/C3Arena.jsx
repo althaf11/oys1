@@ -205,6 +205,7 @@
 
 import React, { useState } from "react";
 import {Link} from 'react-router-dom'
+import Footer from "./Footer";
 export default function C3Arena() {
   const [form, setForm] = useState({ name: "", email: "", college: "" });
   const [message, setMessage] = useState(null);
@@ -429,7 +430,7 @@ export default function C3Arena() {
       </section>
 
       {/* LIVE MEETING CTA SECTION */}
-      <section className="bg-gradient-to-r from-orange-500 to-orange-600 py-16">
+      <section className="bg-black py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
             <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -462,6 +463,7 @@ export default function C3Arena() {
           </div>
         </div>
       </section>
+      <Footer/>
     </main>
   );
 }
