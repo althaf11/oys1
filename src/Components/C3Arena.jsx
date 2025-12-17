@@ -405,42 +405,20 @@ export default function C3Arena() {
         </div>
       </section>
 
-      {/* REWARDS */}
-      <section className="bg-orange-50 text-black py-12">
-        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-3 gap-6">
-          <div>
-            <h4 className="text-xl font-semibold">Prize Money</h4>
-            <p className="mt-2 text-sm">Winners get exciting cash prizes.</p>
-          </div>
-
-          <div>
-            <h4 className="text-xl font-semibold">Certificates</h4>
-            <p className="mt-2 text-sm">
-              Official certificates for all participants & winners.
-            </p>
-          </div>
-
-          <div>
-            <h4 className="text-xl font-semibold">Recognition</h4>
-            <p className="mt-2 text-sm">
-              Top performers get featured on the Hall of Fame.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* LIVE MEETING CTA SECTION */}
-      <section className="bg-black py-16">
+      
+            <div className="flex justify-around   bg-orange-50">
+              {/* LIVE MEETING CTA SECTION */}
+      <section className="bg-orange-50 py-16">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4">
             <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
             </svg>
           </div>
-          <h3 className="text-3xl font-bold text-white mb-4">
+          <h3 className="text-3xl font-bold text-black mb-4">
             Join Our Live Orientation Session
           </h3>
-          <p className="text-orange-100 mb-6 max-w-2xl mx-auto">
+          <p className="text-black-100 mb-6 max-w-2xl mx-auto">
             Get a complete walkthrough of C3 Arena competitions, meet our mentors, ask questions in real-time, and network with fellow participants.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
@@ -454,7 +432,7 @@ export default function C3Arena() {
               </svg>
               Join Live Meeting Now
             </Link>
-            <div className="text-white text-sm">
+            <div className="text-black text-sm">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></span>
                 <span>Session is live now</span>
@@ -463,6 +441,33 @@ export default function C3Arena() {
           </div>
         </div>
       </section>
+
+
+      {/* REWARDS */}
+      <section className="bg-orange-50 text-black py-12 ">
+        <div className="max-w-6xl mx-auto px-6 grid md:grid-cols-1 gap-6  ">
+          <div className=" rounded-xl shadow border border-orange-600 p-4">
+            <h4 className="text-xl font-semibold">Prize Money</h4>
+            <p className="mt-2 text-sm">Winners get exciting cash prizes.</p>
+          </div>
+
+          <div className=" rounded-xl shadow border border-orange-600 p-4">
+            <h4 className="text-xl font-semibold">Certificates</h4>
+            <p className="mt-2 text-sm">
+              Official certificates for all participants & winners.
+            </p>
+          </div>
+
+          <div className=" rounded-xl shadow border border-orange-600 p-4">
+            <h4 className="text-xl font-semibold">Recognition</h4>
+            <p className="mt-2 text-sm">
+              Top performers get featured on the Hall of Fame.
+            </p>
+          </div>
+        </div>
+      </section>
+            </div>
+      
       <Footer/>
     </main>
   );

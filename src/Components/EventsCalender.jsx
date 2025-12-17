@@ -444,6 +444,7 @@ export default function EventCalendar() {
                 <p>🏷️ {selectedEvent.category}</p>
                 <p>🖥️ {selectedEvent.mode}</p>
                 <button onClick={() => setSelectedEvent(null)} className="mt-3 bg-red-500 text-white px-3 py-1 rounded">Close</button>
+                <button onClick={() => setSelectedEvent(null)} className="mt-3 bg-blue-500 text-white px-3 py-1 rounded ml-4">Share</button>
               </>
             ) : (
               <p className="italic text-gray-500">Click an event for details</p>
