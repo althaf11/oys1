@@ -168,12 +168,15 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { Menu, X, Bell, Moon, Sun } from "lucide-react";
 import PhoneModal from "./Phonemodel";
+import { Smartphone } from "lucide-react"; // ✅ ADD ONLY
+
 
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [notifications, setNotifications] = useState(5);
+const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
 
   // 🌙 Dark Mode State
   const [darkMode, setDarkMode] = useState(
@@ -219,7 +222,7 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b dark:border-gray-700">
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-3">
+      <div className="max-w-8xl mx-auto flex items-center justify-around px-6 py-3">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-3" onClick={handleMobileNavClick}>
           <div className="bg-orange-600 text-white p-2 rounded-md shadow">
@@ -341,6 +344,16 @@ const Navbar = () => {
           >
             Gallery
           </NavLink>
+
+{/* ✅ Mobile App Tab */}
+<button
+  onClick={() => setShowAppModal(true)}
+  className="flex items-center gap-1 font-medium text-orange-600 hover:underline"
+>
+  <Smartphone size={18} />
+  Mobile App
+</button>
+
 
           <NavLink
             to="/contact"
@@ -482,6 +495,8 @@ const Navbar = () => {
               </svg>
             </button>
 
+
+
             <div
               className={`grid grid-cols-2 gap-2 mt-2 pl-4 transition-all duration-300 ${
                 servicesOpen ? "max-h-60" : "max-h-0 overflow-hidden"
@@ -513,11 +528,60 @@ const Navbar = () => {
                   </Link>
                 );
               })}
+              
             </div>
+            {/* ✅ Mobile App Tab */}
+<button
+  onClick={() => setShowAppModal(true)}
+  className="flex items-center gap-1 font-medium text-orange-600 hover:underline"
+>
+  <Smartphone size={18} />
+  Mobile App
+</button>
           </div>
+          
+        </div>
+        
+      </div>
+      {/* ✅ Mobile App Modal */}
+{showAppModal && (
+  <div className="fixed inset-0 z-[999] mt-64 bg-black/60 flex items-center justify-center">
+    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 w-full max-w-md relative">
+      <button
+        onClick={() => setShowAppModal(false)}
+        className="absolute top-3 right-3 text-xl"
+      >
+        ✕
+      </button>
+
+      <h2 className="text-2xl font-semibold mb-4 text-center">
+        Download OYS App
+      </h2>
+
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-40 h-40 bg-gray-200 flex items-center justify-center">
+          QR CODE
+        </div>
+
+        <div className="flex gap-4">
+          <img
+            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+            className="h-10"
+            alt="App Store"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+            className="h-10"
+            alt="Play Store"
+          />
         </div>
       </div>
+    </div>
+  </div>
+)}
+
     </nav>
+    
   );
 };
 
