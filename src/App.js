@@ -49,6 +49,15 @@ import C3Arena from "./Components/C3Arena";
 
 import ResumeVideoRecorder from "./Components/VedioTest";
 import Pagination from "./Components/Pagination";
+import CareerMapping from "./Components/CareerMapipng";
+import Job from "./Components/Job";
+import HIgherStudiesGrid from "./Components/HIgherStudiesGrid";
+import ITJobsPage from "./Components/ItJobs";
+import NonITJobsPage from "./Components/NonItJobs";
+import GovernmentJobsPage from "./Components/GovernmentJobPage";
+import MTechPage from "./Components/MtechPage";
+import AbroadEducationPage from "./Components/AbroadEducation";
+import MBAPage from "./Components/MBA";
 
 const App = () => {
   return (
@@ -95,7 +104,17 @@ const App = () => {
         <Route path="/admin" element={<AdminHome/>} />
         <Route path="/services/e-c3" element={<C3Arena/>} />
         <Route path="/services/vediotest" element={<ResumeVideoRecorder/>} />
+        <Route path="/mapping" element={<CareerMapping/>} />
+        <Route path="/career/job" element={<Job/>} />
+        <Route path="/career/higher-studies" element={<HIgherStudiesGrid/>} />
+        <Route path="/career/job/IT" element={<ITJobsPage/>} />
+        <Route path="/career/job/NonIT" element={<NonITJobsPage/>} />
+        <Route path="/career/job/gov" element={<GovernmentJobsPage/>} />
+        <Route path="/career/hs/mtech" element={<MTechPage/>} />
+        <Route path="/career/hs/ae" element={<AbroadEducationPage/>} />
+        <Route path="/career/hs/mba" element={<MBAPage/>} />
        
+
     
       </Routes>
     </Router>

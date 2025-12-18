@@ -52,6 +52,7 @@ import {
 } from "react-icons/fa";
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
+import CareerMapping from "./CareerMapipng";
 
 const Home = () => {
   const scrollRef = useRef(null);
@@ -336,7 +337,7 @@ const Home = () => {
   </motion.div>
 </section>
 
-
+<CareerMapping/>
 
       <Footer />
     </div>
@@ -344,6 +345,16 @@ const Home = () => {
 };
 
 export default Home;
+
+
+
+
+
+
+
+
+
+
 
 
 
