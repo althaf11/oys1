@@ -1,5 +1,5 @@
 import React from 'react';
-import { Laptop, Code, Landmark, Globe, Zap, BookOpen, FileText, Target } from 'lucide-react';
+import { Laptop, Code, Landmark, Globe, Zap, BookOpen, FileText, Target, MessageSquare } from 'lucide-react';
 import ActionButtons from './ActionButtons';
 import Footer from './Footer';
 
@@ -8,7 +8,7 @@ const ITJobsPage = () => {
     { icon: <BookOpen className="w-4 h-4" />, label: "E-Material", route: "/services/e-materials" },
     { icon: <FileText className="w-4 h-4" />, label: "E-Preparation", route: "/services/e-learning" },
     { icon: <Zap className="w-4 h-4" />, label: "Crash Courses", route: "/services/crash-courses" },
-    { icon: <Target className="w-4 h-4" />, label: "Courses", route: "/services/e-learning" }
+    { icon: <MessageSquare className="w-4 h-4" />, label: "Career Counselling", route: "/services/career-counseling" },
   ];
   
   const courses = [

@@ -42,6 +42,42 @@ const ProfileEducation = () => {
     console.log("Saved Education Data:", educationList);
   };
 
+const institutions = [
+  "Sri Chaitanya College",
+  "Narayana Engineering College",
+  "Vignan University",
+  "Anna University",
+  "Osmania University",
+  "Other",
+];
+
+const degrees = [
+  "Diploma",
+  "Bachelor of Technology (B.Tech)",
+  "Bachelor of Engineering (B.E)",
+  "Bachelor of Science (B.Sc)",
+  "Master of Technology (M.Tech)",
+  "Master of Science (M.Sc)",
+  "MBA",
+  "Other",
+];
+
+const fields = [
+  "Computer Science Engineering (CSE)",
+  "Electronics & Communication Engineering (ECE)",
+  "Electrical Engineering (EEE)",
+  "Mechanical Engineering",
+  "Civil Engineering",
+  "Information Technology (IT)",
+  "Artificial Intelligence & ML",
+  "Data Science",
+  "Other",
+];
+
+
+
+
+
   return (
     <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md border border-gray-200">
       <h1 className="text-3xl font-bold text-orange-600 text-center mb-4">
@@ -101,15 +137,21 @@ const ProfileEducation = () => {
                 <label className="block text-gray-700 font-semibold mb-2">
                   Institution Name *
                 </label>
-                <input
-                  type="text"
-                  name="institution"
-                  value={edu.institution}
-                  onChange={(e) => handleChange(index, e)}
-                  placeholder="Enter institution name"
-                  required
-                  className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
-                />
+                <select
+  name="institution"
+  value={edu.institution}
+  onChange={(e) => handleChange(index, e)}
+  required
+  className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
+>
+  <option value="">Select Institution</option>
+  {institutions.map((inst, i) => (
+    <option key={i} value={inst}>
+      {inst}
+    </option>
+  ))}
+</select>
+
               </div>
 
               {/* Degree */}
@@ -117,15 +159,21 @@ const ProfileEducation = () => {
                 <label className="block text-gray-700 font-semibold mb-2">
                   Degree/Program *
                 </label>
-                <input
-                  type="text"
-                  name="degree"
-                  value={edu.degree}
-                  onChange={(e) => handleChange(index, e)}
-                  placeholder="e.g., Bachelor of Engineering"
-                  required
-                  className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
-                />
+                <select
+  name="degree"
+  value={edu.degree}
+  onChange={(e) => handleChange(index, e)}
+  required
+  className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
+>
+  <option value="">Select Degree / Program</option>
+  {degrees.map((deg, i) => (
+    <option key={i} value={deg}>
+      {deg}
+    </option>
+  ))}
+</select>
+
               </div>
 
               {/* Field of Study */}
@@ -133,15 +181,21 @@ const ProfileEducation = () => {
                 <label className="block text-gray-700 font-semibold mb-2">
                   Field of Study *
                 </label>
-                <input
-                  type="text"
-                  name="field"
-                  value={edu.field}
-                  onChange={(e) => handleChange(index, e)}
-                  placeholder="e.g., Computer Science"
-                  required
-                  className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
-                />
+               <select
+  name="field"
+  value={edu.field}
+  onChange={(e) => handleChange(index, e)}
+  required
+  className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
+>
+  <option value="">Select Field of Study</option>
+  {fields.map((field, i) => (
+    <option key={i} value={field}>
+      {field}
+    </option>
+  ))}
+</select>
+
               </div>
 
               {/* Start Date */}

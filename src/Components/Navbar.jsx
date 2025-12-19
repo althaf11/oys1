@@ -170,13 +170,12 @@ import { Menu, X, Bell, Moon, Sun } from "lucide-react";
 import PhoneModal from "./Phonemodel";
 import { Smartphone } from "lucide-react"; // ✅ ADD ONLY
 
-
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
   const [notifications, setNotifications] = useState(5);
-const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
+  const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
 
   // 🌙 Dark Mode State
   const [darkMode, setDarkMode] = useState(
@@ -224,18 +223,24 @@ const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b dark:border-gray-700">
       <div className="max-w-8xl mx-auto flex items-center justify-around px-6 py-3">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-3" onClick={handleMobileNavClick}>
-          <div className="bg-orange-600 text-white p-2 rounded-md shadow">
+        <Link
+          to="/"
+          className="flex items-center gap-3"
+          onClick={handleMobileNavClick}
+        >
+          <div className=" text-white p-2 rounded-md shadow">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdgIdhQh82B9GSWBv4bKPkIjn30IhEg32fuQ&s"
-              className="w-10 h-10"
+              className="lg:w-18 lg:h-14"
               alt="Logo"
             />
           </div>
-          <span className="hidden sm:inline font-semibold dark:text-white">
+          <span className="hidden sm:inline font-extrabold text-xl text-orange-500 dark:text-white">
             Operation Yuva Sankalp
           </span>
-          <span className="inline sm:hidden font-semibold dark:text-white">OYS</span>
+          <span className="inline sm:hidden font-semibold dark:text-white">
+            OYS
+          </span>
         </Link>
 
         {/* Desktop Navigation */}
@@ -310,7 +315,10 @@ const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
               <div className="grid grid-cols-2 gap-4 p-5">
                 {[
                   { path: "/services/resume", label: "Resume" },
-                  { path: "/services/career-counseling", label: "Career Counseling" },
+                  {
+                    path: "/services/career-counseling",
+                    label: "Career Counseling",
+                  },
                   { path: "/services/crash-courses", label: "Crash Courses" },
                   { path: "/services/e-materials", label: "E-Materials" },
                   { path: "/services/e-calendar", label: "E-Calendar" },
@@ -324,7 +332,11 @@ const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
                     className={({ isActive }) =>
                       `group block px-3 py-2 rounded-md transition-all duration-300 
                       hover:text-orange-700 dark:hover:text-orange-400 hover:bg-orange-50 dark:hover:bg-gray-700 
-                      ${isActive ? "text-orange-700 font-semibold bg-orange-50 dark:bg-gray-700" : "text-gray-700 dark:text-gray-300"}`
+                      ${
+                        isActive
+                          ? "text-orange-700 font-semibold bg-orange-50 dark:bg-gray-700"
+                          : "text-gray-700 dark:text-gray-300"
+                      }`
                     }
                   >
                     {item.label}
@@ -345,15 +357,14 @@ const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
             Gallery
           </NavLink>
 
-{/* ✅ Mobile App Tab */}
-<button
-  onClick={() => setShowAppModal(true)}
-  className="flex items-center gap-1 font-medium text-orange-600 hover:underline"
->
-  <Smartphone size={18} />
-  Mobile App
-</button>
-
+          {/* ✅ Mobile App Tab */}
+          <button
+            onClick={() => setShowAppModal(true)}
+            className="flex items-center gap-1 font-medium text-orange-600 hover:underline"
+          >
+            <Smartphone size={18} />
+            Mobile App
+          </button>
 
           <NavLink
             to="/contact"
@@ -371,7 +382,10 @@ const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
         <div className="flex items-center gap-4">
           {/* Notifications */}
           <Link to="/alerts" className="relative inline-flex items-center">
-            <Bell size={22} className="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400" />
+            <Bell
+              size={22}
+              className="text-gray-700 dark:text-gray-300 hover:text-orange-600 dark:hover:text-orange-400"
+            />
             {notifications > 0 && (
               <span className="absolute -top-2 -right-2 bg-red-600 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
                 {notifications}
@@ -409,7 +423,9 @@ const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
 
             <div
               className={`absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-white dark:bg-gray-800 ring-1 ring-black ring-opacity-5 transition-all duration-150 ${
-                profileOpen ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
+                profileOpen
+                  ? "opacity-100 scale-100"
+                  : "opacity-0 scale-95 pointer-events-none"
               }`}
             >
               <div className="py-2">
@@ -495,8 +511,6 @@ const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
               </svg>
             </button>
 
-
-
             <div
               className={`grid grid-cols-2 gap-2 mt-2 pl-4 transition-all duration-300 ${
                 servicesOpen ? "max-h-60" : "max-h-0 overflow-hidden"
@@ -504,13 +518,16 @@ const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
             >
               {[
                 { label: "Resume", path: "/services/resume" },
-                { label: "Career Counseling", path: "/services/career-counseling" },
+                {
+                  label: "Career Counseling",
+                  path: "/services/career-counseling",
+                },
                 { label: "Crash Courses", path: "/services/crash-courses" },
                 { label: "E-Materials", path: "/services/e-materials" },
                 { label: "E-Calendar", path: "/services/e-calendar" },
                 { label: "E-Access Card", path: "/services/e-access" },
                 { label: "E-Learning", path: "/services/e-learning" },
-                 { path: "/services/e-c3", label: "C3Arena" },
+                { path: "/services/e-c3", label: "C3Arena" },
               ].map((item, i) => {
                 const isActive = location.pathname === item.path;
                 return (
@@ -528,60 +545,55 @@ const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
                   </Link>
                 );
               })}
-              
             </div>
             {/* ✅ Mobile App Tab */}
-<button
-  onClick={() => setShowAppModal(true)}
-  className="flex items-center gap-1 font-medium text-orange-600 hover:underline"
->
-  <Smartphone size={18} />
-  Mobile App
-</button>
+            <button
+              onClick={() => setShowAppModal(true)}
+              className="flex items-center gap-1 font-medium text-orange-600 hover:underline"
+            >
+              <Smartphone size={18} />
+              Mobile App
+            </button>
           </div>
-          
         </div>
-        
       </div>
       {/* ✅ Mobile App Modal */}
-{showAppModal && (
-  <div className="fixed inset-0 z-[999] mt-64 bg-black/60 flex items-center justify-center">
-    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 w-full max-w-md relative">
-      <button
-        onClick={() => setShowAppModal(false)}
-        className="absolute top-3 right-3 text-xl"
-      >
-        ✕
-      </button>
+      {showAppModal && (
+        <div className="fixed inset-0 z-[999] mt-64 bg-black/60 flex items-center justify-center">
+          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 w-full max-w-md relative">
+            <button
+              onClick={() => setShowAppModal(false)}
+              className="absolute top-3 right-3 text-xl"
+            >
+              ✕
+            </button>
 
-      <h2 className="text-2xl font-semibold mb-4 text-center">
-        Download OYS App
-      </h2>
+            <h2 className="text-2xl font-semibold mb-4 text-center">
+              Download OYS App
+            </h2>
 
-      <div className="flex flex-col items-center gap-4">
-        <div className="w-40 h-40 bg-gray-200 flex items-center justify-center">
-          QR CODE
+            <div className="flex flex-col items-center gap-4">
+              <div className="w-40 h-40 bg-gray-200 flex items-center justify-center">
+                QR CODE
+              </div>
+
+              <div className="flex gap-4">
+                <img
+                  src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                  className="h-10"
+                  alt="App Store"
+                />
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                  className="h-10"
+                  alt="Play Store"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-
-        <div className="flex gap-4">
-          <img
-            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-            className="h-10"
-            alt="App Store"
-          />
-          <img
-            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-            className="h-10"
-            alt="Play Store"
-          />
-        </div>
-      </div>
-    </div>
-  </div>
-)}
-
+      )}
     </nav>
-    
   );
 };
 

@@ -8,7 +8,7 @@ const GovernmentJobsPage = () => {
     { icon: <BookOpen className="w-4 h-4" />, label: "E-Material", route: "/services/e-materials" },
     { icon: <FileText className="w-4 h-4" />, label: "E-Preparation", route: "/services/e-learning" },
     { icon: <Zap className="w-4 h-4" />, label: "Crash Courses", route: "/services/crash-courses" },
-    { icon: <Target className="w-4 h-4" />, label: "Courses", route: "/services/e-learning" }
+
   ];
   
   const courses = [

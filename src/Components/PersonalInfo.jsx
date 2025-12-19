@@ -30,6 +30,20 @@ const PersonalInfo = ( ) => {
     e.preventDefault();
    
   };
+  
+
+const statesWithCities = {
+  "Andhra Pradesh": ["Visakhapatnam", "Vijayawada", "Guntur", "Tirupati", "Nellore"],
+  Telangana: ["Hyderabad", "Warangal", "Nizamabad", "Karimnagar"],
+  "Tamil Nadu": ["Chennai", "Coimbatore", "Madurai", "Trichy"],
+  Karnataka: ["Bengaluru", "Mysuru", "Mangaluru", "Hubballi"],
+  Maharashtra: ["Mumbai", "Pune", "Nagpur", "Nashik"],
+  Kerala: ["Kochi", "Thiruvananthapuram", "Kozhikode"],
+  "Uttar Pradesh": ["Lucknow", "Noida", "Kanpur", "Varanasi"],
+  Rajasthan: ["Jaipur", "Udaipur", "Jodhpur"],
+  Gujarat: ["Ahmedabad", "Surat", "Vadodara"],
+  Delhi: ["New Delhi"],
+};
 
   return (
     <div className="max-w-3xl mx-auto bg-white p-8 rounded-2xl shadow-md border border-gray-200">
@@ -150,48 +164,71 @@ const PersonalInfo = ( ) => {
           </div>
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Contact Number *
-            </label>
-            <input
-              type="tel"
-              name="contactNumber"
-              placeholder="+91 9876543210"
-              value={formData.contactNumber}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
-            />
-          </div>
+  <label className="block text-gray-700 font-semibold mb-2">
+    Contact Number *
+  </label>
+
+  <div className="flex">
+    <span className="flex items-center px-3 border border-r-0 border-gray-300 rounded-l-md bg-gray-100 text-gray-700">
+      +91
+    </span>
+    <input
+      type="tel"
+      name="contactNumber"
+      placeholder="9876543210"
+      value={formData.contactNumber}
+      onChange={(e) => {
+        const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+        handleChange({
+          target: { name: "contactNumber", value },
+        });
+      }}
+      required
+      className="w-full border border-gray-300 p-3 rounded-r-md focus:ring-2 focus:ring-orange-400 outline-none"
+    />
+  </div>
+</div>
+
 
           <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Alternative Phone Number
-            </label>
-            <input
-              type="tel"
-              name="altPhone"
-              placeholder="+91 9876543211"
-              value={formData.altPhone}
-              onChange={handleChange}
-              className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
-            />
-          </div>
+  <label className="block text-gray-700 font-semibold mb-2">
+    Alternative Phone Number
+  </label>
 
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Email ID *
-            </label>
-            <input
-              type="email"
-              name="email"
-              placeholder="your.email@example.com"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
-            />
-          </div>
+  <div className="flex">
+    <span className="flex items-center px-3 border border-r-0 border-gray-300 rounded-l-md bg-gray-100 text-gray-700">
+      +91
+    </span>
+    <input
+      type="tel"
+      name="altPhone"
+      placeholder="9876543211"
+      value={formData.altPhone}
+      onChange={(e) => {
+        const value = e.target.value.replace(/\D/g, "").slice(0, 10);
+        handleChange({
+          target: { name: "altPhone", value },
+        });
+      }}
+      className="w-full border border-gray-300 p-3 rounded-r-md focus:ring-2 focus:ring-orange-400 outline-none"
+    />
+  </div>
+</div>
+<div>
+  <label className="block text-gray-700 font-semibold mb-2">
+    Email Address *
+  </label>
+  <input
+    type="email"
+    name="email"
+    placeholder="you@example.com"
+    value={formData.email}
+    onChange={handleChange}
+    required
+    className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
+  />
+</div>
+
 
          <div>
   <label className="block text-gray-700 font-semibold mb-2">
@@ -216,68 +253,62 @@ const PersonalInfo = ( ) => {
   <label className="block text-gray-700 font-semibold mb-2">
     State *
   </label>
+
   <select
     name="state"
     value={formData.state}
-    onChange={handleChange}
+    onChange={(e) => {
+  setFormData((prev) => ({
+    ...prev,
+    state: e.target.value,
+    city: "",
+  }));
+}}
+
     required
     className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
   >
     <option value="">Select State</option>
     <option value="Andhra Pradesh">Andhra Pradesh</option>
-    <option value="Arunachal Pradesh">Arunachal Pradesh</option>
-    <option value="Assam">Assam</option>
-    <option value="Bihar">Bihar</option>
-    <option value="Chhattisgarh">Chhattisgarh</option>
-    <option value="Goa">Goa</option>
-    <option value="Gujarat">Gujarat</option>
-    <option value="Haryana">Haryana</option>
-    <option value="Himachal Pradesh">Himachal Pradesh</option>
-    <option value="Jharkhand">Jharkhand</option>
-    <option value="Karnataka">Karnataka</option>
-    <option value="Kerala">Kerala</option>
-    <option value="Madhya Pradesh">Madhya Pradesh</option>
-    <option value="Maharashtra">Maharashtra</option>
-    <option value="Manipur">Manipur</option>
-    <option value="Meghalaya">Meghalaya</option>
-    <option value="Mizoram">Mizoram</option>
-    <option value="Nagaland">Nagaland</option>
-    <option value="Odisha">Odisha</option>
-    <option value="Punjab">Punjab</option>
-    <option value="Rajasthan">Rajasthan</option>
-    <option value="Sikkim">Sikkim</option>
-    <option value="Tamil Nadu">Tamil Nadu</option>
     <option value="Telangana">Telangana</option>
-    <option value="Tripura">Tripura</option>
+    <option value="Tamil Nadu">Tamil Nadu</option>
+    <option value="Karnataka">Karnataka</option>
+    <option value="Maharashtra">Maharashtra</option>
+    <option value="Kerala">Kerala</option>
     <option value="Uttar Pradesh">Uttar Pradesh</option>
-    <option value="Uttarakhand">Uttarakhand</option>
-    <option value="West Bengal">West Bengal</option>
-
-    {/* Union Territories */}
-    <option value="Andaman and Nicobar Islands">Andaman and Nicobar Islands</option>
-    <option value="Chandigarh">Chandigarh</option>
-    <option value="Dadra and Nagar Haveli and Daman and Diu">Dadra and Nagar Haveli and Daman and Diu</option>
+    <option value="Rajasthan">Rajasthan</option>
+    <option value="Gujarat">Gujarat</option>
     <option value="Delhi">Delhi</option>
-    <option value="Jammu and Kashmir">Jammu and Kashmir</option>
-    <option value="Ladakh">Ladakh</option>
-    <option value="Lakshadweep">Lakshadweep</option>
-    <option value="Puducherry">Puducherry</option>
   </select>
 </div>
 
-<div>
+ 
+ 
+  <div>
   <label className="block text-gray-700 font-semibold mb-2">
     City *
   </label>
-  <input
-    type="text"
+
+  <select
     name="city"
-    placeholder="Enter your city"
     value={formData.city}
     onChange={handleChange}
     required
-    className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
-  />
+    disabled={!formData.state}
+    className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none disabled:bg-gray-100"
+  >
+    <option value="">
+      {formData.state ? "Select City" : "Select State First"}
+    </option>
+
+    {statesWithCities[formData.state]?.map((city, index) => (
+      <option key={index} value={city}>
+        {city}
+      </option>
+    ))}
+  </select>
+</div>
+
 </div>
 
 
@@ -323,7 +354,7 @@ const PersonalInfo = ( ) => {
               className="w-full border border-gray-300 p-3 rounded-md focus:ring-2 focus:ring-orange-400 outline-none"
             />
           </div>
-        </div>
+    
 
        
       </form>
