@@ -1,11 +1,14 @@
 import React, { useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
-const LoginPage = () => {
+const LoginPage = ({ setUser }) => {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
@@ -20,53 +23,60 @@ const LoginPage = () => {
       return;
     }
 
-    setError("");
-    console.log("Login Data Submitted:", formData);
+    // ✅ HARDCODED LOGIN
+    if (
+      formData.email === "althaf@gmail.com" &&
+      formData.password === "oys"
+    ) {
+      const userData = {
+        name: "Althaf",
+        email: formData.email,
+      };
 
-    // You can connect this to your backend API for authentication
+      // ✅ Save user to localStorage
+      localStorage.setItem("user", JSON.stringify(userData));
+
+      // ✅ CRITICAL FIX: Update parent state immediately
+      setUser(userData);
+
+      // ✅ Redirect to home
+      navigate("/");
+    } else {
+      setError("Invalid email or password");
+    }
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-      <div className="bg-white shadow-lg rounded-2xl p-8 w-full max-w-md">
-        <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          User Login
-        </h2>
+      <motion.div
+        initial={{ scale: 0.7, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        className="bg-white rounded-2xl p-8 w-full max-w-md shadow-lg"
+      >
+        <h2 className="text-2xl font-bold text-center mb-6">User Login</h2>
 
         <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Email */}
-          <div>
-            <label className="block text-gray-700">Email</label>
-            <input
-              type="email"
-              name="email"
-              placeholder="Enter your email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-orange-300 outline-none"
-            />
-          </div>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={formData.email}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+          />
 
-          {/* Password */}
-          <div>
-            <label className="block text-gray-700">Password</label>
-            <input
-              type="password"
-              name="password"
-              placeholder="Enter your password"
-              value={formData.password}
-              onChange={handleChange}
-              required
-              className="w-full px-4 py-2 border rounded-lg focus:ring focus:ring-orange-300 outline-none"
-            />
-          </div>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={formData.password}
+            onChange={handleChange}
+            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-orange-500"
+          />
 
-          {/* Error Message */}
           {error && <p className="text-red-500 text-sm">{error}</p>}
 
-          {/* Submit Button */}
-          <button
+          <button 
             type="submit"
             className="w-full bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition"
           >
@@ -74,14 +84,15 @@ const LoginPage = () => {
           </button>
         </form>
 
-        {/* Register Link */}
-        <p className="text-center text-sm text-gray-600 mt-4">
-          Don’t have an account?{" "}
-          <a href="/register" className="text-orange-600 hover:underline">
-            Register
-          </a>
-        </p>
-      </div>
+        <div className="text-center mt-4 text-sm">
+          <button
+            onClick={() => navigate("/pagination")}
+            className="text-orange-600 font-semibold hover:underline"
+          >
+            Register Now
+          </button>
+        </div>
+      </motion.div>
     </div>
   );
 };

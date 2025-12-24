@@ -58,17 +58,31 @@ import GovernmentJobsPage from "./Components/GovernmentJobPage";
 import MTechPage from "./Components/MtechPage";
 import AbroadEducationPage from "./Components/AbroadEducation";
 import MBAPage from "./Components/MBA";
+import Room from "./Components/Room";
+import RoomWrapper from "./Components/RoomWrapper";
+import { useEffect, useState } from "react";
 
 const App = () => {
+  const [user, setUser] = useState(() => {
+    const saved = localStorage.getItem("user");
+    return saved ? JSON.parse(saved) : null;
+  });
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      setUser(JSON.parse(storedUser));
+    }
+  }, []);
   return (
     <div>
       <Router>
         <ScrollTop />
-      <Navbar />
+      <Navbar user={user} setUser={setUser} />
       <Routes>
+        
         <Route path="/" element={  <Home />} />
         <Route path="/register" element={<RegistrationPage />} />
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage setUser={setUser}  />} />
         <Route path="/services/e-calendar" element={<EventsCalendar />} />
          <Route path="/conferences/:city" element={<ConferencesPage />} />
         <Route path="/services/e-materials" element={<Materials />} />
@@ -113,6 +127,8 @@ const App = () => {
         <Route path="/career/hs/mtech" element={<MTechPage/>} />
         <Route path="/career/hs/ae" element={<AbroadEducationPage/>} />
         <Route path="/career/hs/mba" element={<MBAPage/>} />
+        {/* <Route path="/live-room" element={<Room/>} /> */}
+        <Route path="/room/:feature" element={<RoomWrapper />} />
        
 
     

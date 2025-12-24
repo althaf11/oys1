@@ -53,10 +53,22 @@ import {
 import Footer from "./Footer";
 import { Link } from "react-router-dom";
 import CareerMapping from "./CareerMapipng";
+import LoginPage from "./LoginPage";
 
 const Home = () => {
   const scrollRef = useRef(null);
   const [isVisible, setIsVisible] = useState(true);
+  const [showLogin, setShowLogin] = useState(false);
+
+  
+
+// Login Page
+useEffect(() => {
+  const loggedIn = localStorage.getItem("isLoggedIn");
+  if (!loggedIn) {
+    setShowLogin(true);
+  }
+}, []);
 
   // Infinite scroll animation for news feed
   useEffect(() => {
@@ -283,7 +295,7 @@ const Home = () => {
   </motion.div>
 </section>
 
-
+<CareerMapping/>
       {/* Loan Ads Section */}
      <section className="bg-white py-12 px-6">
   <motion.h2
@@ -337,7 +349,10 @@ const Home = () => {
   </motion.div>
 </section>
 
-<CareerMapping/>
+{/* {showLogin && <LoginPage onClose={() => setShowLogin(false)} />} */}
+
+ 
+   
 
       <Footer />
     </div>

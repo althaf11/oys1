@@ -165,26 +165,32 @@
 
 // Navbar.jsx
 import React, { useEffect, useRef, useState } from "react";
-import { Link, NavLink, useLocation } from "react-router-dom";
-import { Menu, X, Bell, Moon, Sun } from "lucide-react";
+import { Link, Navigate, NavLink, useLocation, useNavigate } from "react-router-dom";
+import { Menu, X, Bell, Moon, Sun, Smartphone } from "lucide-react";
 import PhoneModal from "./Phonemodel";
-import { Smartphone } from "lucide-react"; // ✅ ADD ONLY
 
-const Navbar = () => {
+const Navbar = ({ user, setUser }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [servicesOpen, setServicesOpen] = useState(false);
   const [profileOpen, setProfileOpen] = useState(false);
-  const [notifications, setNotifications] = useState(5);
-  const [showAppModal, setShowAppModal] = useState(false); // ✅ ADD ONLY
-
-  // 🌙 Dark Mode State
+  const [notifications, setNotifications] = useState(10);
+  const [showAppModal, setShowAppModal] = useState(false);
   const [darkMode, setDarkMode] = useState(
     localStorage.getItem("theme") === "dark"
   );
 
   const location = useLocation();
   const servicesRef = useRef(null);
-  const profileRef = useRef(null);
+  const profileRef = useRef();
+const navigate =useNavigate();
+  // ✅ REMOVED: Duplicate user loading useEffect (handled by App.js now)
+
+  const handleLogout = () => {
+    localStorage.removeItem("user");
+    setUser(null);
+    setProfileOpen(false);
+    navigate('/');
+  };
 
   // 🌙 Apply Dark Mode on Load
   useEffect(() => {
@@ -228,7 +234,7 @@ const Navbar = () => {
           className="flex items-center gap-3"
           onClick={handleMobileNavClick}
         >
-          <div className=" text-white p-2 rounded-md shadow">
+          <div className="text-white p-2 rounded-md shadow">
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdgIdhQh82B9GSWBv4bKPkIjn30IhEg32fuQ&s"
               className="lg:w-18 lg:h-14"
@@ -315,10 +321,7 @@ const Navbar = () => {
               <div className="grid grid-cols-2 gap-4 p-5">
                 {[
                   { path: "/services/resume", label: "Resume" },
-                  {
-                    path: "/services/career-counseling",
-                    label: "Career Counseling",
-                  },
+                  { path: "/services/career-counseling", label: "Career Counseling" },
                   { path: "/services/crash-courses", label: "Crash Courses" },
                   { path: "/services/e-materials", label: "E-Materials" },
                   { path: "/services/e-calendar", label: "E-Calendar" },
@@ -357,12 +360,12 @@ const Navbar = () => {
             Gallery
           </NavLink>
 
-          {/* ✅ Mobile App Tab */}
+          {/* Mobile App Button */}
           <button
             onClick={() => setShowAppModal(true)}
-            className="flex items-center gap-1 font-medium text-orange-600 hover:underline"
+            className="flex items-center gap-1 font-medium text-orange-600 hover:underline mt-"
           >
-            <Smartphone size={18} />
+            <Smartphone size={25}  />
             Mobile App
           </button>
 
@@ -395,7 +398,7 @@ const Navbar = () => {
 
           <PhoneModal />
 
-          {/* 🌙 Dark Mode Toggle */}
+          {/* Dark Mode Toggle */}
           <button
             onClick={() => setDarkMode(!darkMode)}
             className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition"
@@ -407,17 +410,17 @@ const Navbar = () => {
             )}
           </button>
 
-          {/* Profile */}
+          {/* Profile Dropdown */}
           <div ref={profileRef} className="relative">
             <button
               onClick={() => setProfileOpen((s) => !s)}
               className="flex items-center gap-2 px-2 py-1 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700"
             >
               <div className="w-9 h-9 rounded-full bg-gray-200 dark:bg-gray-700 flex items-center justify-center font-semibold text-gray-700 dark:text-white">
-                A
+                {user ? user.name[0].toUpperCase() : "A"}
               </div>
               <span className="hidden md:block text-sm font-medium text-gray-700 dark:text-gray-300">
-                Althaf
+                {user ? user.name : "Account"}
               </span>
             </button>
 
@@ -429,21 +432,40 @@ const Navbar = () => {
               }`}
             >
               <div className="py-2">
-                <Link
-                  to="/pagination"
-                  onClick={handleMobileNavClick}
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                >
-                  Profile
-                </Link>
-
-                <Link
-                  to="/logout"
-                  onClick={handleMobileNavClick}
-                  className="block px-4 py-2 text-sm text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
-                >
-                  Sign Out
-                </Link>
+                {user ? (
+                  <>
+                    <Link
+                      to="/profile"
+                      onClick={() => setProfileOpen(false)}
+                      className="block px-4 py-2 text-sm text-orange-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    >
+                      Profile
+                    </Link>
+                    <button
+                      onClick={handleLogout}
+                      className="w-full text-left px-4 py-2 text-sm text-orange-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    >
+                      Logout
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <Link
+                      to="/login"
+                      onClick={() => setProfileOpen(false)}
+                      className="block px-4 py-2 text-sm text-orange-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    >
+                      Login
+                    </Link>
+                    <Link
+                      to="/pagination"
+                      onClick={() => setProfileOpen(false)}
+                      className="block px-4 py-2 text-sm text-orange-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-700"
+                    >
+                      Register
+                    </Link>
+                  </>
+                )}
               </div>
             </div>
           </div>
@@ -464,7 +486,6 @@ const Navbar = () => {
         }`}
       >
         <div className="px-4 py-4 space-y-3">
-          {/* Main Items */}
           {[
             { to: "/", label: "Home" },
             { to: "/about", label: "About Us" },
@@ -518,10 +539,7 @@ const Navbar = () => {
             >
               {[
                 { label: "Resume", path: "/services/resume" },
-                {
-                  label: "Career Counseling",
-                  path: "/services/career-counseling",
-                },
+                { label: "Career Counseling", path: "/services/career-counseling" },
                 { label: "Crash Courses", path: "/services/crash-courses" },
                 { label: "E-Materials", path: "/services/e-materials" },
                 { label: "E-Calendar", path: "/services/e-calendar" },
@@ -546,53 +564,63 @@ const Navbar = () => {
                 );
               })}
             </div>
-            {/* ✅ Mobile App Tab */}
+
+            {/* Mobile App Button */}
             <button
               onClick={() => setShowAppModal(true)}
-              className="flex items-center gap-1 font-medium text-orange-600 hover:underline"
+              className="flex items-center gap-1 font-medium text-orange-600 hover:underline mt-2 " 
             >
-              <Smartphone size={18} />
+              <Smartphone  className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 "/>
               Mobile App
             </button>
           </div>
         </div>
       </div>
-      {/* ✅ Mobile App Modal */}
+
+      {/* Mobile App Modal */}
       {showAppModal && (
-        <div className="fixed inset-0 z-[999] mt-64 bg-black/60 flex items-center justify-center">
-          <div className="bg-white dark:bg-gray-900 rounded-xl p-6 w-full max-w-md relative">
-            <button
-              onClick={() => setShowAppModal(false)}
-              className="absolute top-3 right-3 text-xl"
-            >
-              ✕
-            </button>
+  <div
+    className="fixed top-0 left-0 w-screen h-screen z-[9999] 
+               bg-black/70 flex items-center justify-center"
+  >
+    <div className="bg-white dark:bg-gray-900 rounded-xl p-6 
+                    w-full max-w-md relative shadow-xl">
+      
+      <button
+        onClick={() => setShowAppModal(false)}
+        className="absolute top-3 right-3 text-2xl hover:text-orange-600 dark:text-white"
+      >
+        ✕
+      </button>
 
-            <h2 className="text-2xl font-semibold mb-4 text-center">
-              Download OYS App
-            </h2>
+      <h2 className="text-2xl font-semibold mb-4 text-center dark:text-white">
+        Download OYS App
+      </h2>
 
-            <div className="flex flex-col items-center gap-4">
-              <div className="w-40 h-40 bg-gray-200 flex items-center justify-center">
-                QR CODE
-              </div>
-
-              <div className="flex gap-4">
-                <img
-                  src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
-                  className="h-10"
-                  alt="App Store"
-                />
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                  className="h-10"
-                  alt="Play Store"
-                />
-              </div>
-            </div>
-          </div>
+      <div className="flex flex-col items-center gap-4">
+        <div className="w-40 h-40 bg-gray-200 dark:bg-gray-700 flex items-center justify-center rounded-lg">
+          <span className="text-gray-500 dark:text-gray-400">QR CODE</span>
         </div>
-      )}
+
+        <div className="flex gap-4">
+          <img
+            src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+            className="h-10"
+            alt="App Store"
+          />
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+            className="h-10"
+            alt="Play Store"
+          />
+        </div>
+      </div>
+
+    </div>
+  </div>
+)}
+
+           
     </nav>
   );
 };

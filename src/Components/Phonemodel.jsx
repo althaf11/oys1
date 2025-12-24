@@ -12,7 +12,8 @@ const PhoneModal = () => {
         className="flex items-center gap-2 text-gray-700 hover:text-orange-600 transition rounded-xl
                    dark:text-gray-200 dark:hover:text-orange-400"
       >
-        <Phone size={20} className="dark:text-gray-200" />
+       <Phone className="w-5 h-5 sm:w-6 sm:h-6 md:w-7 md:h-7 lg:w-8 lg:h-8 dark:text-gray-200" />
+
         <span className="hidden md:inline text-gray-700 hover:text-orange-600 
                          dark:text-gray-200 dark:hover:text-orange-400">
           Toll Free
