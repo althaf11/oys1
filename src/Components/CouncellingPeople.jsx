@@ -7,7 +7,7 @@ const testimonials = [
     videoLink: "#",
     bgColor: "bg-purple-500",
     text: "I'm Kaustav, with a background in mechanical engineering and business design. Amidst COVID-19 uncertainty, I sought a fulfilling career path and turned to Brain Serve for personalized guidance. Through insightful sessions, I discovered my strengths in people management and communication, aligning my career path with my passions and skills.",
-    image: "https://via.placeholder.com/100", // replace with actual image
+    image: "https://youtu.be/4e6KSaCxcHs?si=NsMVALcaK3wQyyZX", // replace with actual image
   },
   {
     name: "Veena",

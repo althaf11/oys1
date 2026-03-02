@@ -28,7 +28,7 @@ const OverallResume = () => {
     
 <ResumeHero />
       <ResumeBenifits />
-      <ResumeBuilder />
+      <ResumeBuilder  />
       <ResumeReviews/>
       <Footer/>
    

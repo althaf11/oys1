@@ -53,7 +53,7 @@
 
 import { useState, useEffect } from 'react';
 
-export default function C3ArenaMeeting() {
+export default function Box() {
   const [showAdminLogin, setShowAdminLogin] = useState(false);
   const [adminPassword, setAdminPassword] = useState('');
   const [meetingStarted, setMeetingStarted] = useState(false);

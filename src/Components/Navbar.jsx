@@ -227,6 +227,7 @@ const navigate =useNavigate();
 
   return (
     <nav className="sticky top-0 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur border-b dark:border-gray-700">
+      
       <div className="max-w-8xl mx-auto flex items-center justify-around px-6 py-3">
         {/* Logo */}
         <Link
@@ -273,7 +274,7 @@ const navigate =useNavigate();
             About Us
           </NavLink>
 
-          <NavLink
+          {/* <NavLink
             to="/admin"
             className={({ isActive }) =>
               isActive
@@ -282,8 +283,8 @@ const navigate =useNavigate();
             }
           >
             Admin Page
-          </NavLink>
-
+          </NavLink> */}
+ 
           {/* Services Dropdown */}
           <div
             ref={servicesRef}
@@ -323,10 +324,10 @@ const navigate =useNavigate();
                   { path: "/services/resume", label: "Resume" },
                   { path: "/services/career-counseling", label: "Career Counseling" },
                   { path: "/services/crash-courses", label: "Crash Courses" },
-                  { path: "/services/e-materials", label: "E-Materials" },
+                  { path: "/services/e-materials", label: "E-Library" },
                   { path: "/services/e-calendar", label: "E-Calendar" },
                   { path: "/services/e-access", label: "E-Access Card" },
-                  { path: "/services/e-learning", label: "E-Learning" },
+                  { path: "/services/e-learning", label: "E-Preparation" },
                   { path: "/services/e-c3", label: "C3Arena" },
                 ].map((item, i) => (
                   <NavLink
@@ -491,7 +492,7 @@ const navigate =useNavigate();
             { to: "/about", label: "About Us" },
             { to: "/gallery", label: "Gallery" },
             { to: "/contact", label: "Contact Us" },
-            { to: "/admin", label: "Admin" },
+            // { to: "/admin", label: "Admin" },
           ].map((item, i) => {
             const isActive = location.pathname === item.to;
             return (

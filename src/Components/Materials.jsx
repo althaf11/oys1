@@ -814,13 +814,13 @@ const Materials = () => {
                 <motion.div
                   key={stream.id}
                   onClick={() => handleStreamClick(stream)}
-                  className="bg-white shadow-md rounded-xl overflow-hidden hover:shadow-lg hover:scale-105 transition transform cursor-pointer "
+                  className="bg-white shadow-md rounded-2xl overflow-hidden hover:shadow-lg hover:scale-105 transition transform cursor-pointer "
                   whileHover={{ scale: 1.05 }}
                 >
                   <img
                     src={stream.image}
                     alt={stream.title}
-                    className="w-full h-64 object-contain"
+                    className="w-full h-64 object-contain rounded-3xl"
                   />
                   <div className="p-5 text-center">
                     <h2 className="text-lg font-semibold text-gray-800">
@@ -833,7 +833,7 @@ const Materials = () => {
           )}
 
           {/* 📘 Stream Materials */}
-          {selectedStream && !selectedMaterial && (
+            {selectedStream && !selectedMaterial && (
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -853,7 +853,7 @@ const Materials = () => {
                     <img
                       src={mat.image}
                       alt={mat.title}
-                      className="w-full h-64 object-contain"
+                      className="w-full h-64 object-contain rounded-2xl"
                     />
                     <div className="p-4 text-center">
                       <h3 className="text-lg font-semibold text-gray-800 mb-2">

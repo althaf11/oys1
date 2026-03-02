@@ -1,5 +1,8 @@
 import React, { useState } from "react";
 import { Trophy, Medal, BookOpen, FileText, Zap, Calendar, Clock } from 'lucide-react';
+import Room from "./Room";
+import Footer from "./Footer"
+import { Link } from "react-router-dom";
 
 // Move static data outside component to prevent recreation
 const winnersData = [
@@ -144,7 +147,7 @@ export default function C3Arena() {
 
   function joinMeeting() {
     // Route to meeting/Box page
-    window.location.href = '/Box';
+    window.location.href = '/services/e-c3/Box';
   }
 
   function handlePreparationClick(type) {
@@ -351,7 +354,11 @@ and earn certificates for your achievements.
                 >
                   Register for different competition
                 </button>
+                <Link to='/Room/test' className="bg-orange-400 py-2 px-2 rounded-lg hover:bg-orange-600">
+                  Start Test
+                </Link>
               </div>
+              
             )}
 
             {/* Live Meeting Section */}
@@ -448,9 +455,9 @@ and earn certificates for your achievements.
       </section>
 
       {/* LIVE MEETING CTA & REWARDS SECTION */}
-      <div className="flex flex-col lg:flex-row justify-around bg-orange-50 gap-8 py-12 px-6">
+      <div className="flex  justify-around bg-orange-50 gap-8 py-12 px-6">
         {/* LIVE MEETING CTA SECTION */}
-        <section className="flex-1 max-w-2xl mx-auto text-center">
+        {/* <section className="flex-1 max-w-2xl mx-auto text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-full mb-4 shadow-md">
             <svg className="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -480,7 +487,7 @@ and earn certificates for your achievements.
               </div>
             </div>
           </div>
-        </section>
+        </section> */}
 
         {/* REWARDS */}
         <section className="flex-1 max-w-md">
@@ -507,7 +514,7 @@ and earn certificates for your achievements.
           </div>
         </section>
       </div>
-
+ 
       {/* WINNERS SECTION */}
       <section className="py-12 max-w-6xl mx-auto px-6">
         <h2 className="text-3xl font-bold text-center text-orange-600 mb-10">
@@ -567,12 +574,7 @@ and earn certificates for your achievements.
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-8">
-        <div className="max-w-6xl mx-auto px-6 text-center">
-          <p className="text-gray-400">© 2025 C3 Arena. All rights reserved.</p>
-          <p className="text-sm text-gray-500 mt-2">Empowering students through competitions and challenges.</p>
-        </div>
-      </footer>
+      <Footer/>
     </main>
   );
 }

@@ -594,7 +594,7 @@ export default function ELearning() {
       className="p-6 max-w-7xl mx-auto min-h-screen"
     >
       <h1 className="text-4xl font-bold mb-10 text-center text-orange-600">
-        E-Learning Exam Platform
+        E-Preparation Exam Platform
       </h1>
 
       <AnimatePresence mode="wait">

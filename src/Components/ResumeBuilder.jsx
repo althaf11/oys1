@@ -1327,7 +1327,7 @@ export default function ResumeBuilder() {
   };
 
   return (
-    <div className="max-w-6xl mx-auto p-6 bg-white dark:bg-gray-900 text-black dark:text-white rounded-xl shadow">
+    <div className="max-w-6xl mx-auto p-6 bg-white dark:bg-gray-900 text-black dark:text-white rounded-xl shadow" id="#resume">
       <h1 className="text-3xl font-bold mb-6">Resume Maker</h1>
 
       {/* Tabs */}
@@ -1354,7 +1354,7 @@ export default function ResumeBuilder() {
         <>
           {/* Insta CV Tab */}
           {tab === "Insta CV" && (
-            <div>
+            <div id="resume">
               <img
                 src="https://marketplace.canva.com/EAFToMa2lws/2/0/1131w/canva-black-and-white-simple-office-assistant-resume-vZCQthxgjPk.jpg"
                 className="w-1/2"
