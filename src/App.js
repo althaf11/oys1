@@ -61,6 +61,7 @@ import MBAPage from "./Components/MBA";
 import Room from "./Components/Room";
 import RoomWrapper from "./Components/RoomWrapper";
 import { useEffect, useState } from "react";
+import SideButtons from "./Components/SideButtons";
 
 const App = () => {
   const [user, setUser] = useState(() => {
@@ -77,6 +78,7 @@ const App = () => {
     <div>
       <Router>
         <ScrollTop />
+        <SideButtons/>
       <Navbar user={user} setUser={setUser} />
       <Routes>
         
